@@ -7,7 +7,7 @@ import {
   Text
 } from 'react-native';
 
-import MyNavigator from './pages/common/StackNavgator';
+import MyNavigator from './common/StackNavgator';
 
 export default class Root extends PureComponent {
   render() {

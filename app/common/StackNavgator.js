@@ -7,9 +7,9 @@ import {
   TabNavigator
 } from "react-navigation";
 
-import List from '../list/List';
-import Editor from '../editor/Editor';
-import Account from '../account/Account';
+import List from '../pages/list/List';
+import Editor from '../pages/editor/Editor';
+import Account from '../pages/account/Account';
 
 import TabNavigatorRouter from './TabNavgatorRouter';
 
@@ -43,9 +43,13 @@ const stackNavigatorConfig = {
     headerTintColor: '#333',
     showIcon: true,
     headerStyle: {
-      backgroundColor: '#fff',
+      backgroundColor: '#ee735c',
       elevation: 999,
       zIndex: 999
+    },
+
+    headerTitleStyle: {
+      color: '#fff',
     }
   }
 }

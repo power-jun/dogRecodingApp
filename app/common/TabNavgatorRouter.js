@@ -1,8 +1,8 @@
 import React from 'react';
 
-import List from '../list/List';
-import Editor from '../editor/Editor';
-import Account from '../account/Account';
+import List from '../pages/list/List';
+import Editor from '../pages/editor/Editor';
+import Account from '../pages/account/Account';
 
 import Icon from '../component/Icon';
 

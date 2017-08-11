@@ -4,7 +4,7 @@ import {
   Text
  } from 'react-native';
 
- import BaseStyle from '../common/BaseStyle';
+ import BaseStyle from '../../common/BaseStyle';
 
  export default class Account extends PureComponent {
   static navigationOptions = {

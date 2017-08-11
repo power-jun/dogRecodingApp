@@ -5,7 +5,7 @@ import {
   Image
 } from 'react-native';
 
-import BaseStyle from '../common/BaseStyle';
+import BaseStyle from '../../common/BaseStyle';
 
 export default class Editor extends PureComponent {
   static navigationOptions = {
@@ -16,7 +16,7 @@ export default class Editor extends PureComponent {
     return(
       <View style={BaseStyle.container}>
         <Text>编辑页</Text>
-        <Image source={require('../assets/img/gonggao.png')}/>
+        <Image source={require('../../assets/img/gonggao.png')}/>
       </View>
     )
   }
