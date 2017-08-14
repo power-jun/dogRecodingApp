@@ -2,12 +2,15 @@ import React, { PureComponent } from 'react';
 import {
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  FlatList
 } from 'react-native';
 
 import BaseStyle from '../../common/BaseStyle';
-import Icon from '../../component/Icon';
 import Loading from '../../component/Loading';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import RenderItem from '../../component/RenderItem';
 
 export default class List extends PureComponent {
   static navigationOptions = {
@@ -15,7 +18,15 @@ export default class List extends PureComponent {
   }
 
   state = {
-    loading: true
+    loading: true,
+    dataSource: [{
+      title: '测测老卢会说话',
+      pictureUrl: '../assets/img/dog1.jpeg'
+    },
+    {
+      title: '哈巴狗',
+      pictureUrl: '../assets/img/dog2.jpeg'
+    }]
   }
 
   componentDidMount() {
@@ -24,16 +35,23 @@ export default class List extends PureComponent {
     });
   }
 
+  _renderItem(data) {
+    return <RenderItem items={data.item} navigation={this.props.navigation}/>
+  }
+
   render() {
     return (
      this.state.loading ?
      <Loading/>
      :
      <View style={BaseStyle.container}>
-       <TouchableOpacity onPress={() => this.props.navigation.navigate('Editor') }>
-        <Text>列表页</Text>
-        <Icon name="magnifier" size={18} color="#7e7e7e"/>
-       </TouchableOpacity>
+      <FlatList
+        renderItem={this._renderItem.bind(this)}
+        data={this.state.dataSource}
+        keyExtractor={(item, index) => {
+              return index;
+        }}
+      />
      </View>
     )
   }

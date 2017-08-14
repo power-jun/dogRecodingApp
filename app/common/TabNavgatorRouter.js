@@ -4,30 +4,28 @@ import List from '../pages/list/List';
 import Editor from '../pages/editor/Editor';
 import Account from '../pages/account/Account';
 
-import Icon from '../component/Icon';
+import Icon from 'react-native-vector-icons/Ionicons';
+import IconA from 'react-native-vector-icons/FontAwesome';
 
 const TabNavigatorRouters = {
   List: {
     screen: List,
     navigationOptions: {
-      tabBarLabel: '列表页',
-      tabBarIcon: ({ tintColor }) => ( <Icon name="magnifier" size={16} color={tintColor} /> )
+      tabBarIcon: ({ tintColor }) => ( <IconA name="video-camera" size={22} color={tintColor} /> )
     }
   },
 
   Editor: {
     screen: Editor,
     navigationOptions: {
-      tabBarLabel: '编辑页',
-      tabBarIcon: ({ tintColor }) => ( <Icon name="magnifier" size={16} color={tintColor} /> )
+      tabBarIcon: ({ tintColor }) => ( <Icon name="ios-add-circle-outline" size={22} color={tintColor}/> )
     }
   },
 
   Account: {
     screen: Account,
     navigationOptions: {
-      tabBarLabel: '账户页',
-      tabBarIcon: ({ tintColor }) => ( <Icon name="magnifier" size={16} color={tintColor} />)
+      tabBarIcon: ({ tintColor }) => ( <IconA name="user" size={22} color={tintColor} />)
     }
   }
 }
