@@ -3,6 +3,8 @@
 yarn.lock
 bundle/
 
+app/
+
 # OSX
 #
 .DS_Store

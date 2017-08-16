@@ -10,11 +10,15 @@ import {
 import List from '../pages/list/List';
 import Editor from '../pages/editor/Editor';
 import Account from '../pages/account/Account';
+import Detail from '../pages/detail/Detail';
+import Login from '../pages/login/Login';
+import InitialRouteName from '../pages/initRouter/InitRouter';
 
 import TabNavigatorRouter from './TabNavgatorRouter';
 
 let TabNavigators = null;
 let MyNavigator = null;
+let initialRouteName = '';
 
 const TabNavigatorConfig = {
   initialRouteName: 'List',
@@ -37,7 +41,7 @@ const TabNavigatorConfig = {
 }
 
 const stackNavigatorConfig = {
-  initialRouteName: 'List',
+  initialRouteName: 'InitialRouteName',
   navigationOptions: {
     headerBackTitle: null,
     headerTintColor: '#333',
@@ -60,17 +64,31 @@ export default class MinStackNavigator extends PureComponent {
     TabNavigators = TabNavigator(TabNavigatorRouter, TabNavigatorConfig);
 
     const StackNavgatorRouter = {
-      List: { screen: TabNavigators },
-      Editor: { screen: Editor },
-      Account: { screen: Account }
+      List: {
+        screen: TabNavigators
+      },
+      Editor: {
+        screen: Editor
+      },
+      Account: {
+        screen: Account
+      },
+      Detail: {
+        screen: Detail
+      },
+      Login: {
+        screen: Login
+      },
+
+      InitialRouteName: {
+        screen: InitialRouteName
+      }
     }
 
     MyNavigator = StackNavigator(StackNavgatorRouter, stackNavigatorConfig);
   }
 
   render() {
-    return (
-      <MyNavigator/>
-    )
+    return ( <MyNavigator/>)
   }
 }

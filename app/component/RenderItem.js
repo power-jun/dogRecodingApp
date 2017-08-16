@@ -15,9 +15,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import IconP from 'react-native-vector-icons/Foundation';
 import IconH from 'react-native-vector-icons/Ionicons';
 
-import Screen from '../utils/screen';
+import Screen from '../utils/Screen';
+
+const width = Screen.width;
 
 export default class RenderItem extends PureComponent {
+
   state = {
     likeFlag: false
   }
@@ -32,7 +35,7 @@ export default class RenderItem extends PureComponent {
 
   comment() {
     InteractionManager.runAfterInteractions(() => {
-      this.props.navigation.navigate('Editor');
+      this.props.navigation.navigate('Detail');
     })
   }
 
@@ -42,33 +45,31 @@ export default class RenderItem extends PureComponent {
 
     return (
       <View>
-        <TouchableHighlight style={styles.itemsStyle}>
-          <View>
-            <View style={styles.itemTitle}><Text style={[BaseStyle.fz18, BaseStyle.color333]}>{items.title}</Text></View>
-             <View style={styles.listImgBox}>
-                <ImageLoad
-                  style={styles.listImg}
-                  loadingStyle={{ size: 'small', color: 'white' }}
-                  placeholderSource={placeholderImage}
-                  placeholderStyle={{ backgroundColor: '#dedfe1', width: Screen.width, height: Screen.width * 0.5 }}
-                  source={items.pictureUrl ? { uri: items.pictureUrl } : placeholderImage}
-                />
-                <View style={styles.palyIcon}>
-                  <IconP name="play" size={22} color="#ee735c"/>
-                </View>
-              </View>
+        <TouchableOpacity style={styles.itemsStyle} onPress={() => this.comment()}>
+          <View style={styles.itemTitle}><Text style={[BaseStyle.fz18, BaseStyle.color333]}>{items.title}</Text></View>
+          <View style={styles.listImgBox}>
+            <ImageLoad
+              style={styles.listImg}
+              loadingStyle={{ size: 'small', color: 'white' }}
+              placeholderSource={placeholderImage}
+              placeholderStyle={{ backgroundColor: '#dedfe1', width: width, height: width * 0.5 }}
+              source={items.pictureUrl ? { uri: items.pictureUrl } : placeholderImage}
+            />
+            <View style={BaseStyle.palyIcon}>
+              <IconP name="play" size={22} color="#ee735c" />
             </View>
-          </TouchableHighlight>
-          <View style={styles.itemFooter}>
-            <TouchableOpacity onPress={() => this.like()} style={{ flexDirection: 'row',justifyContent: 'center',paddingRight: '20%',borderRightWidth: StyleSheet.hairlineWidth,borderRightColor: '#ccc' }}>
-              <IconH name={ this.state.likeFlag ? "ios-heart" : "ios-heart-outline"} size={18} style={{marginRight: 5}} color={this.state.likeFlag ? '#f60' : '#ccc'}/>
-              <Text>喜欢</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.comment()} style={{flexDirection: 'row',justifyContent: 'center',paddingLeft: '20%'}}>
-              <Icon name="comment-o" size={18} color="#ccc" style={{ marginRight: 5}}/>
-              <Text>评论</Text>
-            </TouchableOpacity>
           </View>
+        </TouchableOpacity>
+        <View style={styles.itemFooter}>
+          <TouchableOpacity onPress={() => this.like()} style={{ flexDirection: 'row', justifyContent: 'center', paddingRight: '20%', borderRightWidth: StyleSheet.hairlineWidth, borderRightColor: '#ccc' }}>
+            <IconH name={this.state.likeFlag ? "ios-heart" : "ios-heart-outline"} size={18} style={{ marginRight: 5 }} color={this.state.likeFlag ? '#f60' : '#ccc'} />
+            <Text>喜欢</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.comment()} style={{ flexDirection: 'row', justifyContent: 'center', paddingLeft: '20%' }}>
+            <Icon name="comment-o" size={18} color="#ccc" style={{ marginRight: 5 }} />
+            <Text>评论</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -77,12 +78,12 @@ export default class RenderItem extends PureComponent {
 const styles = StyleSheet.create({
   itemsStyle: {
     flex: 1,
-    width: Screen.width
+    width: width
   },
 
   listImg: {
-    width: Screen.width,
-    height: Screen.width * 0.5
+    width: width,
+    height: width * 0.5
   },
 
   itemTitle: {
@@ -97,20 +98,5 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: '#ccc'
-  },
-
-  palyIcon: {
-    position: 'absolute',
-    width: 30,
-    height: 30,
-    right: 14,
-    bottom: 14,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-    borderColor: '#fff',
-    borderWidth: 1,
-    borderRadius: 23,
   }
 })

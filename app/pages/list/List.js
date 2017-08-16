@@ -15,6 +15,7 @@ import RenderItem from '../../component/RenderItem';
 export default class List extends PureComponent {
   static navigationOptions = {
     title: '狗狗说',
+    headerLeft: <Text></Text>
   }
 
   state = {
